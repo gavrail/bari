@@ -60,6 +60,14 @@ namespace Bari.Core.Model
         }
 
         /// <summary>
+        /// Gets the active goals for the post processable item
+        /// </summary>
+        public IEnumerable<Goal> ActiveGoals
+        {
+            get { return new HashSet<Goal>(modules.Select(module => module.Suite.ActiveGoal)); }
+        }
+
+        /// <summary>
         /// Gets or sets the packager definition for this product
         /// </summary>
         public PackagerDefinition Packager

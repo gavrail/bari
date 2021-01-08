@@ -141,6 +141,14 @@ namespace Bari.Core.Model
         }
 
         /// <summary>
+        /// Gets the active goals for the post processable item
+        /// </summary>
+        public IEnumerable<Goal> ActiveGoals
+        {
+            get { return new HashSet<Goal>(module.ActiveGoals); }
+        }
+
+        /// <summary>
         /// Gets or sets the root directory of the project's sources
         /// </summary>
         public virtual IFileSystemDirectory RootDirectory

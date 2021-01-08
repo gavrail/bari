@@ -43,6 +43,7 @@ namespace Bari.Plugins.PythonScripts.Scripting
                 {
                     scope.SetVariable("targetRoot", localTargetRoot.AbsolutePath);
                     scope.SetVariable("targetDir", localTargetDir.AbsolutePath);
+                    scope.SetVariable("targetGoals", new HashSet<Goal>(GetAllGoals(target.ActiveGoals)).Select(goal => goal.Name));
                     var pco = (PythonCompilerOptions)engine.GetCompilerOptions();
                     pco.Module |= ModuleOptions.Optimized;
 
@@ -89,6 +90,18 @@ namespace Bari.Plugins.PythonScripts.Scripting
             finally
             {
                 runtime.Shutdown();
+            }
+        }
+
+        public static IEnumerable<Goal> GetAllGoals(IEnumerable<Goal> goals)
+        {
+            foreach (var goal in goals)
+            {
+                yield return goal;
+                foreach (var incorporatedGoal in GetAllGoals(goal.IncorporatedGoals))
+                {
+                    yield return incorporatedGoal;
+                }
             }
         }
     }

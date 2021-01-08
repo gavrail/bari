@@ -15,6 +15,11 @@ namespace Bari.Core.Model
         string RelativeTargetPath { get; }
 
         /// <summary>
+        /// Gets the active goals for the post processable item
+        /// </summary>
+        IEnumerable<Goal> ActiveGoals { get; }
+
+        /// <summary>
         /// Adds a new postprocessor to this project
         /// </summary>
         /// <param name="postProcessDefinition">Post processor type and parameters</param>

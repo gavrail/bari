@@ -149,6 +149,14 @@ namespace Bari.Core.Model
         }
 
         /// <summary>
+        /// Gets the active goals for the post processable item
+        /// </summary>
+        public IEnumerable<Goal> ActiveGoals
+        {
+            get { return new List<Goal>() { suite.ActiveGoal }; }
+        }
+
+        /// <summary>
         /// Gets the suite this module belongs to
         /// </summary>
         public Suite Suite
