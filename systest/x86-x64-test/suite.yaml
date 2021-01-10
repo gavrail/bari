@@ -1,6 +1,10 @@
 ---
 suite:      bari systemtest single-cs-exe
 
+fs-repositories:
+    - fsrepo\%NAME\%FILENAME.%EXT
+    - fsrepo/%NAME/%FILENAME.%EXT
+
 goals:
     - name: debug-x86
       incorporates:
@@ -16,4 +20,5 @@ modules:
       projects:
         - name: HelloWorld
           type: executable
-          
+      postprocessors:
+         - test

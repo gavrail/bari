@@ -1,15 +1,22 @@
+using System;
+using System.IO;
+
 public static class Hello
 {
 	public static int Main(string[] args) 
 	{
-		if (System.Environment.Is64BitProcess)
+		if (Environment.Is64BitProcess)
 		{
-			System.Console.WriteLine("64 bit");
+			Console.WriteLine("64 bit");
+			Console.WriteLine(File.ReadAllText(
+				Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "generated.txt")));
 			return 64;
 		}
 		else
 		{
-			System.Console.WriteLine("32 bit");	
+			Console.WriteLine("32 bit");
+			Console.WriteLine(File.ReadAllText(
+				Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "generated.txt")));
 			return 32;
 		}
 	}
