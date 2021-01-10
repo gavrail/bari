@@ -38,7 +38,7 @@ namespace systests
                     Console.Out.NewLine,
                     Console.Out.NewLine)),
                 () => ExeProductBuild("postprocessor-script-test", "main", Path.Combine("target", "main", "HelloWorld.exe"), 11, string.Join("",
-                    "Hello_world!!!",
+                    "Hello_world,debug!!!",
                     Console.Out.NewLine,
                     Console.Out.NewLine)),
                 () => MultiSolutionTest()
@@ -86,8 +86,18 @@ namespace systests
         private void X86X64Test()
         {
             Log("..x86-x64-test..");
-            ExeBuildWithGoal("x86-x64-test", "debug-x86", Path.Combine("target", "HelloWorld", "HelloWorld.exe"), 32, "32 bit" + Console.Out.NewLine);
-            ExeBuildWithGoal("x86-x64-test", "debug-x64", Path.Combine("target", "HelloWorld", "HelloWorld.exe"), 64, "64 bit" + Console.Out.NewLine);
+            ExeBuildWithGoal("x86-x64-test", "debug-x86", Path.Combine("target", "HelloWorld", "HelloWorld.exe"), 32, string.Join("",
+                "32 bit",
+                Console.Out.NewLine,
+                "Hello_world,debug-x86,debug,x86!!!",
+                Console.Out.NewLine,
+                Console.Out.NewLine));
+            ExeBuildWithGoal("x86-x64-test", "debug-x64", Path.Combine("target", "HelloWorld", "HelloWorld.exe"), 64, string.Join("",
+                "64 bit",
+                Console.Out.NewLine,
+                "Hello_world,debug-x64,debug,x64!!!",
+                Console.Out.NewLine,
+                Console.Out.NewLine));
             Log("OK\n");
         }
 
