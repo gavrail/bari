@@ -17,7 +17,7 @@ namespace Bari.Core.Model
         /// <summary>
         /// Gets the active goals for the post processable item
         /// </summary>
-        IEnumerable<Goal> ActiveGoals { get; }
+        Goal ActiveGoal { get; }
 
         /// <summary>
         /// Adds a new postprocessor to this project

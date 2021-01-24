@@ -60,11 +60,24 @@ namespace Bari.Core.Model
         }
 
         /// <summary>
-        /// Gets the active goals for the post processable item
+        /// Gets the active goal for the post processable item
         /// </summary>
-        public IEnumerable<Goal> ActiveGoals
+        public Goal ActiveGoal
         {
-            get { return new HashSet<Goal>(modules.Select(module => module.Suite.ActiveGoal)); }
+            get
+            {
+                Contract.Requires(new HashSet<Suite>(modules.Select(mod => mod.Suite)).Count <= 1);
+
+                var module = modules.FirstOrDefault();
+                if (module != null)
+                {
+                    if (module.Suite != null)
+                    {
+                        return module.Suite.ActiveGoal;
+                    }
+                }
+                return null;
+            }
         }
 
         /// <summary>

@@ -149,11 +149,11 @@ namespace Bari.Core.Model
         }
 
         /// <summary>
-        /// Gets the active goals for the post processable item
+        /// Gets the active goal for the post processable item
         /// </summary>
-        public IEnumerable<Goal> ActiveGoals
+        public Goal ActiveGoal
         {
-            get { return new List<Goal>() { suite.ActiveGoal }; }
+            get { return suite.ActiveGoal; }
         }
 
         /// <summary>
